@@ -49,8 +49,6 @@ function generateRandomQIndex() {
     return questionIndex
 }
 
-console.log(generateRandomQIndex())
-
 var questionRetriever = function() {
 
 }
