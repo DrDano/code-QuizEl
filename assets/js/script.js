@@ -37,3 +37,34 @@ var questionBank = [
 var currentQuestion
 var rightAnswer = ""
 var answerChoices = []
+
+
+// Backend generation of question and answer data
+var questionRetriever = function() {
+
+}
+
+
+// Generation of Graphical User Interface
+var answerButtonGenerator = function() {
+
+}
+
+var questionPresenter = function() {
+
+}
+
+
+// Evaluation of user answer
+var answerEvaluator = function() {
+    // if user answer correct return true
+    // if user answer incorrect return false
+}
+
+var quizTimer = function() {
+
+}
+
+var wrongAnswerPunisher = function() {
+    // returns new time amount after subtracting 5 seconds
+}
