@@ -42,9 +42,14 @@ var displayConatinerE = document.querySelector("#question-container")
 var displayTitleE = document.querySelector("#question-title")
 var displayListE = document.querySelector("#possible-answers")
 var highScores = {}
+var questionPresentations = 0
 
 var currentScore = 0
 
+
+var endScreenPresenter = function() {
+    displayTitleE.textContent = "The quiz has ended or timed out. Proceed to either view high scores, or quiz again!"
+}
 
 // Backend generation of question and answer data
 function generateRandomQIndex() {
@@ -132,6 +137,7 @@ var questionPresenter = function() {
     var answerButtons = answerButtonGenerator();
     displayConatinerE.appendChild(answerButtons);
 
+    questionPresentations += 1
 }
 
 
@@ -143,9 +149,11 @@ var answerEvaluator = function(answer) {
     var correctAnswer = questionContent.ra
     var userAnswer = answer
     if (userAnswer === correctAnswer) {
-        return true
+        console.log("correct answer!")
+        correctAnswerRewarder();
     } else if (userAnswer !== correctAnswer) {
-        return false
+        console.log("wrong, you suck.")
+        wrongAnswerPunisher();
     }
 }
 
@@ -155,10 +163,24 @@ var quizTimer = function() {
 
 var wrongAnswerPunisher = function() {
     // returns new time amount after subtracting 5 seconds
+    console.log(questionPresentations)
+
+    if (questionPresentations === questionBank.length) {
+        console.log("punisher engage end screen")
+        endScreenPresenter();
+    }
+
 }
 
 var correctAnswerRewarder = function() {
     // adds +1 to currentScore
+    currentScore += 1
+    console.log(questionPresentations)
+
+    if (questionPresentations === questionBank.length) {
+        console.log("rewarder engage end screen")
+        endScreenPresenter();
+    }
 }
 
 var highScoresObjectModifier = function() {
@@ -189,15 +211,19 @@ var QuizButtonHandler = function(event) {
     else if (targetE.matches("#option-A")) {
         var answer = "a"
         answerEvaluator(answer);
+        console.log("A")
     } else if (targetE.matches("#option-B")) {
         var answer = "b"
         answerEvaluator(answer)
+        console.log("B")
     } else if (targetE.matches("#option-C")) {
         var answer = "c"
         answerEvaluator(answer)
+        console.log("C")
     } else if (targetE.matches("#option-D")) {
         var answer = "d"
         answerEvaluator(answer)
+        console.log("D")
     }
 }
 
@@ -206,6 +232,7 @@ var QuizButtonHandler = function(event) {
 // }
 
 initialFormGenerator();
+
 
 quizDashboardE.addEventListener("click", QuizButtonHandler);
 highScoresE.addEventListener("click", highScoresPresenter)
