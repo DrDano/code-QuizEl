@@ -34,9 +34,12 @@ var questionBank = [
     }
 ]
 
+var highScores = {}
+
 var currentQuestion
 var rightAnswer = ""
 var answerChoices = []
+var currentScore = 0
 
 
 // Backend generation of question and answer data
@@ -67,4 +70,24 @@ var quizTimer = function() {
 
 var wrongAnswerPunisher = function() {
     // returns new time amount after subtracting 5 seconds
+}
+
+var correctAnswerRewarder = function() {
+    // adds +1 to currentScore
+}
+
+var highScoresObjectModifier = function() {
+    // adds/replaces a high score if it matches an initials key in the object and if it exceeds the current high score, or if it doesn't match any initials key
+}
+
+var highScoresObjectSaver = function() {
+
+}
+
+var highScoresObjectLoader = function() {
+    // loads high scores object into a readable format for the highScoresPresenter
+}
+
+var highScoresPresenter = function() {
+    
 }
