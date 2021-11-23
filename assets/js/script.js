@@ -43,12 +43,20 @@ var currentScore = 0
 
 
 // Backend generation of question and answer data
+function generateRandomQIndex() {
+    var questionIndex = 0
+    questionIndex = Math.floor(questionBank.length * Math.random())
+    return questionIndex
+}
+
+console.log(generateRandomQIndex())
+
 var questionRetriever = function() {
 
 }
 
 
-// Generation of Graphical User Interface
+// Generation of question Graphical User Interface
 var answerButtonGenerator = function() {
 
 }
