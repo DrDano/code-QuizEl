@@ -136,11 +136,14 @@ var questionPresenter = function() {
 
 
 // Evaluation of user answer
-var answerEvaluator = function() {
+var answerEvaluator = function(answer) {
     // if user answer correct return true
     // if user answer incorrect return false
-
-
+    var questionContent = questionRetriever()
+    var correctAnswer = questionContent.ra
+    var userAnswer = answer
+    console.log(userAnswer)
+    console.log(correctAnswer)
 }
 
 var quizTimer = function() {
@@ -181,16 +184,16 @@ var QuizButtonHandler = function(event) {
     }
 
     else if (targetE.matches("#option-A")) {
-        var answer = "A"
+        var answer = "a"
         answerEvaluator(answer);
     } else if (targetE.matches("#option-B")) {
-        var answer = "B"
+        var answer = "b"
         answerEvaluator(answer)
     } else if (targetE.matches("#option-C")) {
-        var answer = "C"
+        var answer = "c"
         answerEvaluator(answer)
     } else if (targetE.matches("#option-D")) {
-        var answer = "D"
+        var answer = "d"
         answerEvaluator(answer)
     }
 }
