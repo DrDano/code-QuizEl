@@ -35,6 +35,7 @@ body {
   font-size: 1.5vw;
   color: var(--tertiary);
   background-color: var(--grey);
+  border-radius: 5px;
 }
 
 main {
@@ -46,18 +47,27 @@ main {
 
 .question-container {
   display: flex;
+  flex: 1, 60%;
   flex-direction: column;
   align-items: center;
 }
 
 .question-title {
-  flex: 1;
+  flex: 1, 80%;
+  width: 60%;
 }
 
 .btn {
-  background-color: var(--grey);
+  background-color: var(--primary);
   font-size: 2vw;
-  color: var(--primary);
+  color: var(--white);
+  border-radius: 5px;
+  border-color: var(--primary);
+  box-shadow: -5px, 5px, var(--secondary);
+}
+
+.btn:hover {
+  cursor: pointer;
 }
 
 
@@ -67,5 +77,9 @@ main {
 @media screen and (max-width: 980px) {
   main {
     flex-direction: column;
+  }
+
+  .question-title {
+    font-size: 2.5vw;
   }
 }
