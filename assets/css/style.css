@@ -7,7 +7,16 @@
   --secondary: #552396;
   --tertiary: rgb(255, 255, 255);
   --grey: #333;
+  --white: #ffff;
   font-size: 60%;
+}
+
+header {
+  background: var(--secondary);
+  padding: 30px 25px;
+  border-bottom: 5px solid var(--primary);
+  display: flex;
+  justify-content: space-between;
 }
 
 body {
@@ -17,14 +26,8 @@ body {
   padding: 0;
   display: flex;
   min-height: 100vh;
-  flex-direction: row;
+  flex-direction: column;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-header {
-  background: var(--secondary);
-  padding: 30px 25px;
-  border-bottom: 5px solid var(--primary);
 }
 
 .high-score-link {
