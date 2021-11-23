@@ -142,8 +142,11 @@ var answerEvaluator = function(answer) {
     var questionContent = questionRetriever()
     var correctAnswer = questionContent.ra
     var userAnswer = answer
-    console.log(userAnswer)
-    console.log(correctAnswer)
+    if (userAnswer === correctAnswer) {
+        return true
+    } else if (userAnswer !== correctAnswer) {
+        return false
+    }
 }
 
 var quizTimer = function() {
