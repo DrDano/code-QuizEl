@@ -129,15 +129,24 @@ var answerButtonGenerator = function() {
 
 var questionPresenter = function() {
     var startButton = document.querySelector(".start-btn-con")
-    startButton.remove();
+    
+    if (startButton) {
+        startButton.remove();
+    }
 
     var questionContent = questionRetriever();
     displayTitleE.textContent = questionContent.cq.question;
+    
+    var answerBtnContainer = document.querySelector(".answer-btn-container")
+    if (answerBtnContainer) {
+        answerBtnContainer.remove
+    }
 
     var answerButtons = answerButtonGenerator();
     displayConatinerE.appendChild(answerButtons);
 
-    questionPresentations += 1
+    questionPresentations++
+    console.log(`question ${questionPresentations} being presented`)
 }
 
 
@@ -155,6 +164,7 @@ var answerEvaluator = function(answer) {
         console.log("wrong, you suck.")
         wrongAnswerPunisher();
     }
+    questionPresenter();
 }
 
 var quizTimer = function() {
@@ -174,7 +184,7 @@ var wrongAnswerPunisher = function() {
 
 var correctAnswerRewarder = function() {
     // adds +1 to currentScore
-    currentScore += 1
+    currentScore++
     console.log(questionPresentations)
 
     if (questionPresentations === questionBank.length) {
