@@ -36,9 +36,6 @@ var questionBank = [
 
 var highScores = {}
 
-var currentQuestion
-var rightAnswer = ""
-var answerChoices = []
 var currentScore = 0
 
 
@@ -50,7 +47,10 @@ function generateRandomQIndex() {
 }
 
 var questionRetriever = function() {
-
+    var currentQuestion = questionBank[currentQIdx];
+    var rightAnswer = currentQuestion.correctAnswer;
+    var answerChoices = currentQuestion.answers;
+    var currentQIdx = generateRandomQIndex()
 }
 
 
