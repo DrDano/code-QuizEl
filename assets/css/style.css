@@ -53,17 +53,30 @@ main {
 }
 
 .question-title {
-  flex: 1, 80%;
-  width: 60%;
+  flex: 3;
+  margin: 10px 200px;
+}
+
+.answer-btn-container {
+  flex: 1;
+  max-width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .btn {
+  flex: 0.75;
   background-color: var(--primary);
   font-size: 2vw;
   color: var(--white);
   border-radius: 5px;
   border-color: var(--primary);
   box-shadow: -5px, 5px, var(--secondary);
+  padding: 3px;
+  margin: 4px;
 }
 
 .btn:hover {

@@ -94,19 +94,23 @@ var answerButtonGenerator = function() {
     answerBtnContainer.className = "answer-btn-container"
     
     var buttonA = document.createElement("button")
-    buttonA.textContent = questionContent.ac.a
+    buttonA.textContent = "1. " + questionContent.ac.a
+    buttonA.className = "btn"
     buttonA.id = "option-A"
 
     var buttonB = document.createElement("button")
-    buttonB.textContent = questionContent.ac.b
+    buttonB.textContent = "2. " + questionContent.ac.b
+    buttonB.className = "btn"
     buttonB.id = "option-B"
 
     var buttonC = document.createElement("button")
-    buttonC.textContent = questionContent.ac.c
+    buttonC.textContent = "3. " + questionContent.ac.c
+    buttonC.className = "btn"
     buttonC.id = "option-C"
 
     var buttonD = document.createElement("button")
-    buttonD.textContent = questionContent.ac.d
+    buttonD.textContent = "4. " + questionContent.ac.d
+    buttonD.className = "btn"
     buttonD.id = "option-D"
 
     answerBtnContainer.appendChild(buttonA);
@@ -119,6 +123,9 @@ var answerButtonGenerator = function() {
 }
 
 var questionPresenter = function() {
+    var startButton = document.querySelector(".start-btn-con")
+    startButton.remove();
+
     var questionContent = questionRetriever();
     displayTitleE.textContent = questionContent.cq.question;
 
