@@ -45,7 +45,13 @@ main {
 }
 
 main.question-title {
-  flex: 2, 50%;
+  flex: 1;
+}
+
+main.btn {
+  background-color: var(--grey);
+  font-size: 2vw;
+  color: var(--primary);
 }
 
 
