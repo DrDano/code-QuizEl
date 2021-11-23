@@ -61,15 +61,24 @@ var questionRetriever = function() {
 
 // Generation of question Graphical User Interface
 var initialFormGenerator = function() {
+
     displayTitleE.textContent = "Welcome to the Javascript Extreme Quiz by DrDano! Push the button below to begin the timed quiz."
 
+    var startButton = startButtonGenerator();
+    displayConatinerE.appendChild(startButton);
 }
 
 var startButtonGenerator = function() {
+    var startButtonContainerE = document.createElement("div");
+    startButtonContainerE.className = "start-btn-con";
+
     var startButtonE = document.createElement("button");
-  startButtonE.textContent = "Start Quiz";
-  startButtonE.className = "btn";
-  startButtonE.setAttribute("data-task-id", taskId);
+    startButtonE.textContent = "Start Quiz";
+    startButtonE.className = "btn";
+    startButtonE.id = "start-button";
+
+    startButtonContainerE.appendChild(startButtonE);
+    return startButtonContainerE;
 }
 
 var answerButtonGenerator = function() {
