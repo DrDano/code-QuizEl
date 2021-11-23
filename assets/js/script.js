@@ -180,8 +180,18 @@ var QuizButtonHandler = function(event) {
         questionPresenter();
     }
 
-    else if (targetE.matches("#answer-btn")) {
-        answerEvaluator();
+    else if (targetE.matches("#option-A")) {
+        var answer = "A"
+        answerEvaluator(answer);
+    } else if (targetE.matches("#option-B")) {
+        var answer = "B"
+        answerEvaluator(answer)
+    } else if (targetE.matches("#option-C")) {
+        var answer = "C"
+        answerEvaluator(answer)
+    } else if (targetE.matches("#option-D")) {
+        var answer = "D"
+        answerEvaluator(answer)
     }
 }
 
