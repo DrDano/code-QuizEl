@@ -11,3 +11,29 @@
 
 // store the user's highest score in an object with their initials as the key
 // store all high scores in JSON format in localStorage for retrieval whenever the user clicks on "view high scores"
+
+var questionBank = [
+    {
+        question: "What is Javascript?",
+        answers: {
+            a: '42',
+            b: 'A type of antelope',
+            c: 'The programming language of the web'
+        },
+        correctAnswer: 'c'
+    },
+
+    {
+        question: "What is an object?",
+        answers: {
+            a: 'A giraffe',
+            b: 'A data structure which contains data associated with keys',
+            c: 'The subject of a verb used in colloquial English'
+        },
+        correctAnswer: 'b'
+    }
+]
+
+var currentQuestion
+var rightAnswer = ""
+var answerChoices = []
