@@ -36,6 +36,9 @@ var questionBank = [
 
 var quizDashboardE = document.querySelector("#quiz-dashboard")
 var highScoresE = document.querySelector("#high-score-btn")
+var displayConatinerE = document.querySelector("#question-container")
+var displayTitleE = document.querySelector("#question-title")
+var displayListE = document.querySelector("#possible-answers")
 var highScores = {}
 
 var currentScore = 0
@@ -57,6 +60,11 @@ var questionRetriever = function() {
 
 
 // Generation of question Graphical User Interface
+var initialFormGenerator = function() {
+    
+
+}
+
 var answerButtonGenerator = function() {
 
 }
@@ -105,6 +113,7 @@ var highScoresPresenter = function() {
 var QuizButtonHandler = function() {
     // listens for the initial quiz start button to begin the quiz
     // listens for the quiz answer buttons and sends the input to the answer evaluator to determine if the punisher or rewarder is used
+    
 }
 
 // var initiateQuizButtonHandler = function() {
