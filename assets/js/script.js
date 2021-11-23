@@ -139,7 +139,7 @@ var questionPresenter = function() {
     
     var answerBtnContainer = document.querySelector(".answer-btn-container")
     if (answerBtnContainer) {
-        answerBtnContainer.remove
+        answerBtnContainer.remove();
     }
 
     var answerButtons = answerButtonGenerator();
