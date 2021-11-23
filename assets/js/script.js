@@ -126,15 +126,25 @@ var highScoresPresenter = function() {
     
 }
 
-var QuizButtonHandler = function() {
+var QuizButtonHandler = function(event) {
     // listens for the initial quiz start button to begin the quiz
     // listens for the quiz answer buttons and sends the input to the answer evaluator to determine if the punisher or rewarder is used
-    
+    var targetE = event.target;
+
+    if (targetE.matches("#start-button")) {
+        questionPresenter();
+    }
+
+    else if (targetE.matches("#answer-btn")) {
+        answerEvaluator();
+    }
 }
 
 // var initiateQuizButtonHandler = function() {
 //     // listens for an event of "click" on the start quiz button and proceeds to present the quiz
 // }
+
+initialFormGenerator();
 
 quizDashboardE.addEventListener("click", QuizButtonHandler);
 highScoresE.addEventListener("click", highScoresPresenter)
