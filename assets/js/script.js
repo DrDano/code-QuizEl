@@ -18,7 +18,8 @@ var questionBank = [
         answers: {
             a: '42',
             b: 'A type of antelope',
-            c: 'The programming language of the web'
+            c: 'The programming language of the web',
+            d: 'All of the above'
         },
         correctAnswer: 'c'
     },
@@ -28,7 +29,8 @@ var questionBank = [
         answers: {
             a: 'A giraffe',
             b: 'A data structure which contains data associated with keys',
-            c: 'The subject of a verb used in colloquial English'
+            c: 'The subject of a verb used in colloquial English',
+            d: 'All of the above'
         },
         correctAnswer: 'b'
     }
@@ -52,10 +54,14 @@ function generateRandomQIndex() {
 }
 
 var questionRetriever = function() {
+    var currentQIdx = generateRandomQIndex()
     var currentQuestion = questionBank[currentQIdx];
     var rightAnswer = currentQuestion.correctAnswer;
     var answerChoices = currentQuestion.answers;
-    var currentQIdx = generateRandomQIndex()
+    
+    return {cq: currentQuestion, 
+        ra: rightAnswer, 
+        ac: answerChoices}
 }
 
 
@@ -82,10 +88,42 @@ var startButtonGenerator = function() {
 }
 
 var answerButtonGenerator = function() {
+    var questionContent = questionRetriever();
 
+    var answerBtnContainer = document.createElement("div");
+    answerBtnContainer.className = "answer-btn-container"
+    
+    var buttonA = document.createElement("button")
+    buttonA.textContent = questionContent.ac.a
+    buttonA.id = "option-A"
+
+    var buttonB = document.createElement("button")
+    buttonB.textContent = questionContent.ac.b
+    buttonB.id = "option-B"
+
+    var buttonC = document.createElement("button")
+    buttonC.textContent = questionContent.ac.c
+    buttonC.id = "option-C"
+
+    var buttonD = document.createElement("button")
+    buttonD.textContent = questionContent.ac.d
+    buttonD.id = "option-D"
+
+    answerBtnContainer.appendChild(buttonA);
+    answerBtnContainer.appendChild(buttonB);
+    answerBtnContainer.appendChild(buttonC);
+    answerBtnContainer.appendChild(buttonD);
+
+
+    return answerBtnContainer
 }
 
 var questionPresenter = function() {
+    var questionContent = questionRetriever();
+    displayTitleE.textContent = questionContent.cq.question;
+
+    var answerButtons = answerButtonGenerator();
+    displayConatinerE.appendChild(answerButtons);
 
 }
 
