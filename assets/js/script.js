@@ -47,10 +47,6 @@ var questionPresentations = 0
 var currentScore = 0
 
 
-var endScreenPresenter = function() {
-    displayTitleE.textContent = "The quiz has ended or timed out. Proceed to either view high scores, or quiz again!"
-}
-
 // Backend generation of question and answer data
 function generateRandomQIndex() {
     var questionIndex = 0
@@ -154,9 +150,9 @@ var questionPresenter = function() {
 var answerEvaluator = function(answer) {
     // if user answer correct return true
     // if user answer incorrect return false
-    var questionContent = questionRetriever()
-    var correctAnswer = questionContent.ra
-    var userAnswer = answer
+    var questionContent = questionRetriever();
+    var correctAnswer = questionContent.ra;
+    var userAnswer = answer;
     if (userAnswer === correctAnswer) {
         console.log("correct answer!")
         correctAnswerRewarder();
@@ -164,7 +160,11 @@ var answerEvaluator = function(answer) {
         console.log("wrong, you suck.")
         wrongAnswerPunisher();
     }
-    questionPresenter();
+
+    if (questionPresentations === questionBank.length) {
+        endScreenPresenter();
+    } else {questionPresenter();}
+    
 }
 
 var quizTimer = function() {
@@ -173,7 +173,6 @@ var quizTimer = function() {
 
 var wrongAnswerPunisher = function() {
     // returns new time amount after subtracting 5 seconds
-    console.log(questionPresentations)
 
     if (questionPresentations === questionBank.length) {
         console.log("punisher engage end screen")
@@ -185,12 +184,22 @@ var wrongAnswerPunisher = function() {
 var correctAnswerRewarder = function() {
     // adds +1 to currentScore
     currentScore++
-    console.log(questionPresentations)
 
     if (questionPresentations === questionBank.length) {
         console.log("rewarder engage end screen")
         endScreenPresenter();
     }
+}
+
+var endScreenPresenter = function() {
+    displayTitleE.textContent = "The quiz has ended or timed out. Proceed to either view high scores, or quiz again!"
+
+    var answerBtnContainer = document.querySelector(".answer-btn-container")
+    if (answerBtnContainer) {
+        answerBtnContainer.remove();
+    }
+
+    
 }
 
 var highScoresObjectModifier = function() {
