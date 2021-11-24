@@ -69,7 +69,7 @@ var questionRetriever = function() {
 // Generation of question Graphical User Interface
 var initialFormGenerator = function() {
 
-    displayTitleE.textContent = "Welcome to the Javascript Extreme Quiz by DrDano! Push the button below to begin the timed quiz."
+    displayTitleE.textContent = "Welcome to the Javascript QuizEl by DrDano! Push the button below to begin the timed quiz."
 
     var startButton = startButtonGenerator();
     displayConatinerE.appendChild(startButton);
@@ -174,21 +174,11 @@ var quizTimer = function() {
 var wrongAnswerPunisher = function() {
     // returns new time amount after subtracting 5 seconds
 
-    if (questionPresentations === questionBank.length) {
-        console.log("punisher engage end screen")
-        endScreenPresenter();
-    }
-
 }
 
 var correctAnswerRewarder = function() {
     // adds +1 to currentScore
     currentScore++
-
-    if (questionPresentations === questionBank.length) {
-        console.log("rewarder engage end screen")
-        endScreenPresenter();
-    }
 }
 
 var endScreenPresenter = function() {
@@ -199,7 +189,9 @@ var endScreenPresenter = function() {
         answerBtnContainer.remove();
     }
 
-    
+    var startButton = startButtonGenerator();
+    displayConatinerE.appendChild(startButton);
+
 }
 
 var highScoresObjectModifier = function() {
