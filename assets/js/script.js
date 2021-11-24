@@ -182,6 +182,9 @@ var correctAnswerRewarder = function() {
 }
 
 var endScreenPresenter = function() {
+    questionPresentations = 0
+    currentScore = 0
+    
     displayTitleE.textContent = "The quiz has ended or timed out. Proceed to either view high scores, or quiz again!"
 
     var answerBtnContainer = document.querySelector(".answer-btn-container")
@@ -237,10 +240,6 @@ var QuizButtonHandler = function(event) {
         console.log("D")
     }
 }
-
-// var initiateQuizButtonHandler = function() {
-//     // listens for an event of "click" on the start quiz button and proceeds to present the quiz
-// }
 
 initialFormGenerator();
 
