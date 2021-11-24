@@ -182,6 +182,8 @@ var correctAnswerRewarder = function() {
 }
 
 var endScreenPresenter = function() {
+    highScoresFormPresenter();
+
     questionPresentations = 0
     currentScore = 0
     
@@ -194,6 +196,10 @@ var endScreenPresenter = function() {
 
     var startButton = startButtonGenerator();
     displayConatinerE.appendChild(startButton);
+
+}
+
+var highScoresFormPresenter = function() {
 
 }
 
@@ -245,4 +251,4 @@ initialFormGenerator();
 
 
 quizDashboardE.addEventListener("click", QuizButtonHandler);
-highScoresE.addEventListener("click", highScoresPresenter)
+highScoresE.addEventListener("click", highScoresPresenter);
