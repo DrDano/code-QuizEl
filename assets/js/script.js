@@ -46,6 +46,7 @@ var questionPresentations = 0
 
 var currentScore = 0
 var elapsedTime = 0
+var gameOver = false
 
 
 // Backend generation of question and answer data
@@ -207,7 +208,7 @@ var endScreenPresenter = function() {
         answerBtnContainer.remove();
     }
 
-    elapsedTime = 20
+    gameOver = true;
 
     highScoresFormPresenter();
 
@@ -361,11 +362,13 @@ var quizTimer = function() {
     setTimeout(timedOut, interval);
 
     setInterval(function(){
-        elapsedTime++
-        if (elapsedTime === 20) {
-            elapsedTime = 0
+        if (elapsedTime < 20 && gameOver === false) {
+            elapsedTime++
+            console.log(elapsedTime)
+        } else if (gameOver) {
+            elapsedTime = 0;
         }
-        console.log(elapsedTime)}, 1000)
+    }, 1000)
 }
 
 initialFormGenerator();
