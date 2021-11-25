@@ -229,7 +229,7 @@ var highScoresObjectModifier = function(initials, score) {
     // adds/replaces a high score if it matches an initials key in the object and if it exceeds the current high score, or if it doesn't match any initials key
     
     if (highScores.hasOwnProperty(initials)) {
-        if (highScores.initials < currentScore) {
+        if (highScores[initials] < currentScore) {
             highScores[initials] = score
         }
     } else if (!highScores.hasOwnProperty(initials)) {
