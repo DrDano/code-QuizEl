@@ -103,8 +103,8 @@ var submitButtonGenerator = function() {
     return submitButtonEContainer;
 }
 
-var answerButtonGenerator = function() {
-    var questionContent = questionRetriever();
+var answerButtonGenerator = function(currentQuestionContent) {
+    var questionContent = currentQuestionContent;
 
     var answerBtnContainer = document.createElement("div");
     answerBtnContainer.className = "answer-btn-container"
@@ -153,7 +153,7 @@ var questionPresenter = function() {
         answerBtnContainer.remove();
     }
 
-    var answerButtons = answerButtonGenerator();
+    var answerButtons = answerButtonGenerator(questionContent);
     displayContainerE.appendChild(answerButtons);
 
     questionPresentations++
