@@ -75,7 +75,6 @@ var initialFormGenerator = function() {
     var startButton = startButtonGenerator();
     displayContainerE.appendChild(startButton);
 
-    quizTimer();
 }
 
 var startButtonGenerator = function() {
@@ -194,6 +193,10 @@ var correctAnswerRewarder = function() {
 }
 
 var endScreenPresenter = function() {
+    var startButton = document.querySelector(".start-btn-con")
+    if (startButton) {
+        startButton.remove();
+    }
     
     questionPresentations = 0
     
@@ -309,6 +312,7 @@ var QuizButtonHandler = function(event) {
 
     if (targetE.matches("#start-button")) {
         questionPresenter();
+        quizTimer();
     }
 
     else if (targetE.matches("#option-A")) {
@@ -350,18 +354,18 @@ var QuizButtonHandler = function(event) {
 
 var quizTimer = function() {
     
-    var interval = 100
-    function increaseTime(){
-        elapsedTime++
-        console.log(elapsedTime);
-
-        if (elapsedTime === 20) {
+    var interval = 20000
+    function timedOut(){
             endScreenPresenter();
-        } else if (interval < 2) {
-            interval = 100
-        }
     }
-    setTimeout(increaseTime, interval);
+    setTimeout(timedOut, interval);
+
+    setInterval(function(){
+        elapsedTime++
+        if (elapsedTime === 20) {
+            elapsedTime = 0
+        }
+        console.log(elapsedTime)}, 1000)
 }
 
 initialFormGenerator();
