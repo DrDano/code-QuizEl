@@ -197,7 +197,6 @@ var correctAnswerRewarder = function() {
 var endScreenPresenter = function() {
     
     questionPresentations = 0
-    currentScore = 0
     
     displayTitleE.textContent = "The quiz has ended or timed out. Enter your initials and push 'Submit' to record your score."
 
@@ -226,8 +225,11 @@ var highScoresFormPresenter = function() {
     initialsInputContainerE.appendChild(submitButton);
 }
 
-var highScoresObjectModifier = function() {
+var highScoresObjectModifier = function(initials, score) {
     // adds/replaces a high score if it matches an initials key in the object and if it exceeds the current high score, or if it doesn't match any initials key
+    console.log(initials, score);
+    
+    currentScore = 0;
 }
 
 var highScoresObjectSaver = function() {
@@ -267,6 +269,13 @@ var QuizButtonHandler = function(event) {
         var answer = "d"
         answerEvaluator(answer)
         console.log("D")
+    } else if (targetE.matches("#submit-button")) {
+        var initialsInput = document.querySelector("#initials-form-input");
+        var initials = initialsInput.value;
+        var score = currentScore
+        console.log("Button handler: " + initials + score)
+
+        highScoresObjectModifier(initials, score)
     }
 }
 
