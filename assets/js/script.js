@@ -45,7 +45,7 @@ var highScores = {}
 var questionPresentations = 0
 
 var currentScore = 0
-var elapsedTime = 20
+var elapsedTime = 0
 
 
 // Backend generation of question and answer data
@@ -350,16 +350,18 @@ var QuizButtonHandler = function(event) {
 
 var quizTimer = function() {
     
-    var interval = 
-    function decreaseTime(){
-        elapsedTime--
+    var interval = 100
+    function increaseTime(){
+        elapsedTime++
         console.log(elapsedTime);
 
-        if (elapsedTime === 0) {
+        if (elapsedTime === 20) {
             endScreenPresenter();
+        } else if (interval < 2) {
+            interval = 100
         }
     }
-    setInterval(decreaseTime, interval)
+    setTimeout(increaseTime, interval);
 }
 
 initialFormGenerator();
