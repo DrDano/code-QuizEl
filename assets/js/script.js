@@ -235,12 +235,14 @@ var highScoresObjectModifier = function(initials, score) {
     } else if (!highScores.hasOwnProperty(initials)) {
         highScores[initials] = score
     }
-    
+
+    highScoresObjectSaver();
+    console.log(localStorage.getItem("high-scores"))
     currentScore = 0;
 }
 
 var highScoresObjectSaver = function() {
-
+    localStorage.setItem("high-scores", JSON.stringify(highScores));
 }
 
 var highScoresObjectLoader = function() {
