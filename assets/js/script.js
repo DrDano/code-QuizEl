@@ -295,9 +295,9 @@ var highScoresPresenter = function() {
     highScoresContainerE.appendChild(goBackButtonCon);
 
     var goBackButtonE = document.createElement("button");
-    goBackButtonCon.className = "btn";
-    goBackButtonCon.id = "goBack-btn";
-    goBackButtonE.textContent = "Go Back"
+    goBackButtonE.className = "btn";
+    goBackButtonE.id = "goBack-btn";
+    goBackButtonE.textContent = "Go Back";
     goBackButtonCon.appendChild(goBackButtonE);
 }
 
