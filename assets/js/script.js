@@ -45,6 +45,7 @@ var highScores = {}
 var questionPresentations = 0
 
 var currentScore = 0
+var elapsedTime = 20
 
 
 // Backend generation of question and answer data
@@ -73,6 +74,8 @@ var initialFormGenerator = function() {
 
     var startButton = startButtonGenerator();
     displayContainerE.appendChild(startButton);
+
+    quizTimer();
 }
 
 var startButtonGenerator = function() {
@@ -180,10 +183,6 @@ var answerEvaluator = function(answer) {
     
 }
 
-var quizTimer = function() {
-
-}
-
 var wrongAnswerPunisher = function() {
     // returns new time amount after subtracting 5 seconds
 
@@ -204,6 +203,8 @@ var endScreenPresenter = function() {
     if (answerBtnContainer) {
         answerBtnContainer.remove();
     }
+
+    elapsedTime = 20
 
     highScoresFormPresenter();
 
@@ -345,6 +346,20 @@ var QuizButtonHandler = function(event) {
 
         initialFormGenerator();
     }
+}
+
+var quizTimer = function() {
+    
+    var interval = 
+    function decreaseTime(){
+        elapsedTime--
+        console.log(elapsedTime);
+
+        if (elapsedTime === 0) {
+            endScreenPresenter();
+        }
+    }
+    setInterval(decreaseTime, interval)
 }
 
 initialFormGenerator();
