@@ -269,6 +269,11 @@ var highScoresPresenter = function() {
         displayContainerE.firstChild.remove();
     }
 
+    var highScoresContainerE = document.querySelector("#hs-container");
+    if (highScoresContainerE) {
+        highScoresContainerE.remove();
+    }
+
     var highScoresContainerE = document.createElement("div");
     highScoresContainerE.className = "hs-con";
     highScoresContainerE.id = "hs-container";
@@ -284,6 +289,16 @@ var highScoresPresenter = function() {
         highScoreE.textContent = `${key} Score: ${value}`
         highScoresContainerE.appendChild(highScoreE);
     }
+
+    var goBackButtonCon = document.createElement("div");
+    goBackButtonCon.className = "goBack-con"
+    highScoresContainerE.appendChild(goBackButtonCon);
+
+    var goBackButtonE = document.createElement("button");
+    goBackButtonCon.className = "btn";
+    goBackButtonCon.id = "goBack-btn";
+    goBackButtonE.textContent = "Go Back"
+    goBackButtonCon.appendChild(goBackButtonE);
 }
 
 var QuizButtonHandler = function(event) {
@@ -317,6 +332,18 @@ var QuizButtonHandler = function(event) {
         var score = currentScore
 
         highScoresObjectModifier(initials, score)
+    } else if (targetE.matches("#goBack-btn")) {
+        var highScoresContainerE = document.querySelector("#hs-container");
+        highScoresContainerE.remove();
+
+        var replaceHeader = document.createElement("h2");
+        replaceHeader.className = "question-title";
+        replaceHeader.id = "question-title"
+        replaceHeader.textContent = "Welcome to the Javascript QuizEl by DrDano! Push the button below to begin the timed quiz."
+        displayTitleE = replaceHeader
+        displayContainerE.appendChild(displayTitleE);
+
+        initialFormGenerator();
     }
 }
 
