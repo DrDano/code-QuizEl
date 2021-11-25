@@ -228,16 +228,20 @@ var highScoresFormPresenter = function() {
 var highScoresObjectModifier = function(initials, score) {
     // adds/replaces a high score if it matches an initials key in the object and if it exceeds the current high score, or if it doesn't match any initials key
     
-    if (highScores.hasOwnProperty(initials)) {
-        if (highScores[initials] < currentScore) {
+    var loadedHS = highScoresObjectLoader();
+    highScores = loadedHS
+    
+    if (loadedHS[initials]) {
+        if (loadedHS[initials] < score) {
             highScores[initials] = score
+            highScoresObjectSaver();
         }
-    } else if (!highScores.hasOwnProperty(initials)) {
+    } else {
         highScores[initials] = score
+        highScoresObjectSaver();
     }
 
     highScoresObjectSaver();
-    console.log(localStorage.getItem("high-scores"))
     currentScore = 0;
 }
 
@@ -247,6 +251,9 @@ var highScoresObjectSaver = function() {
 
 var highScoresObjectLoader = function() {
     // loads high scores object into a readable format for the highScoresPresenter
+    var savedHSObj = localStorage.getItem("high-scores");
+    var parsedHSObj = JSON.parse(savedHSObj);
+    return parsedHSObj;
 }
 
 var highScoresPresenter = function() {
