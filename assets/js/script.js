@@ -38,7 +38,7 @@ var questionBank = [
 
 var quizDashboardE = document.querySelector("#quiz-dashboard")
 var highScoresE = document.querySelector("#high-score-btn")
-var displayConatinerE = document.querySelector("#question-container")
+var displayContainerE = document.querySelector("#question-container")
 var displayTitleE = document.querySelector("#question-title")
 var displayListE = document.querySelector("#possible-answers")
 var highScores = {}
@@ -72,7 +72,7 @@ var initialFormGenerator = function() {
     displayTitleE.textContent = "Welcome to the Javascript QuizEl by DrDano! Push the button below to begin the timed quiz."
 
     var startButton = startButtonGenerator();
-    displayConatinerE.appendChild(startButton);
+    displayContainerE.appendChild(startButton);
 }
 
 var startButtonGenerator = function() {
@@ -86,6 +86,19 @@ var startButtonGenerator = function() {
 
     startButtonContainerE.appendChild(startButtonE);
     return startButtonContainerE;
+}
+
+var submitButtonGenerator = function() {
+    var submitButtonEContainer = document.createElement("div");
+    submitButtonEContainer.className = "submit-btn-con";
+
+    var submitButtonE = document.createElement("button");
+    submitButtonE.textContent = "Submit";
+    submitButtonE.className = "btn";
+    submitButtonE.id = "submit-button";
+
+    submitButtonEContainer.appendChild(submitButtonE);
+    return submitButtonEContainer;
 }
 
 var answerButtonGenerator = function() {
@@ -139,7 +152,7 @@ var questionPresenter = function() {
     }
 
     var answerButtons = answerButtonGenerator();
-    displayConatinerE.appendChild(answerButtons);
+    displayContainerE.appendChild(answerButtons);
 
     questionPresentations++
     console.log(`question ${questionPresentations} being presented`)
@@ -182,25 +195,35 @@ var correctAnswerRewarder = function() {
 }
 
 var endScreenPresenter = function() {
-    highScoresFormPresenter();
-
+    
     questionPresentations = 0
     currentScore = 0
     
-    displayTitleE.textContent = "The quiz has ended or timed out. Proceed to either view high scores, or quiz again!"
+    displayTitleE.textContent = "The quiz has ended or timed out. Enter your initials and push 'Submit' to record your score."
 
     var answerBtnContainer = document.querySelector(".answer-btn-container")
     if (answerBtnContainer) {
         answerBtnContainer.remove();
     }
 
-    var startButton = startButtonGenerator();
-    displayConatinerE.appendChild(startButton);
+    highScoresFormPresenter();
 
 }
 
 var highScoresFormPresenter = function() {
+    var initialsInputContainerE = document.createElement("div");
+    initialsInputContainerE.className = "initials-con";
+    initialsInputContainerE.id = "initials-container";
+    displayContainerE.appendChild(initialsInputContainerE);
 
+    var initialsInputE = document.createElement("input");
+    initialsInputE.type = "text";
+    initialsInputE.className = "initials-input";
+    initialsInputE.id = "initials-form-input";
+    initialsInputContainerE.appendChild(initialsInputE);
+
+    var submitButton = submitButtonGenerator();
+    initialsInputContainerE.appendChild(submitButton);
 }
 
 var highScoresObjectModifier = function() {
