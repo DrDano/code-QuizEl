@@ -243,6 +243,10 @@ var highScoresObjectModifier = function(initials, score) {
 
     highScoresObjectSaver();
     currentScore = 0;
+
+    var initialsInputContainerE = document.querySelector("#initials-container");
+    initialsInputContainerE.remove();
+    initialFormGenerator();
 }
 
 var highScoresObjectSaver = function() {
