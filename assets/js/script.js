@@ -227,8 +227,12 @@ var highScoresFormPresenter = function() {
 
 var highScoresObjectModifier = function(initials, score) {
     // adds/replaces a high score if it matches an initials key in the object and if it exceeds the current high score, or if it doesn't match any initials key
-    console.log(initials, score);
-    
+    if (highScores.hasOwnProperty(initials)) {
+        
+    }
+
+    var objElement = 
+
     currentScore = 0;
 }
 
