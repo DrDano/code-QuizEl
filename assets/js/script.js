@@ -261,7 +261,29 @@ var highScoresObjectLoader = function() {
 }
 
 var highScoresPresenter = function() {
-    
+
+    var loadedHS = highScoresObjectLoader();
+    var hSbOjLength = Object.keys(loadedHS).length
+
+    while (displayContainerE.firstChild) {
+        displayContainerE.firstChild.remove();
+    }
+
+    var highScoresContainerE = document.createElement("div");
+    highScoresContainerE.className = "hs-con";
+    highScoresContainerE.id = "hs-container";
+    quizDashboardE.appendChild(highScoresContainerE);
+
+    for (let i = 0; i < hSbOjLength; i++) {
+        var key = Object.keys(loadedHS)[i]
+        var value = Object.values(loadedHS)[i]
+
+        var highScoreE = document.createElement("div");
+        highScoreE.className = "hs";
+        highScoreE.id = "hs-element";
+        highScoreE.textContent = `${key} Score: ${value}`
+        highScoresContainerE.appendChild(highScoreE);
+    }
 }
 
 var QuizButtonHandler = function(event) {
