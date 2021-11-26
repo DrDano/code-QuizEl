@@ -41,6 +41,7 @@ var highScoresE = document.querySelector("#high-score-btn")
 var displayContainerE = document.querySelector("#question-container")
 var displayTitleE = document.querySelector("#question-title")
 var displayListE = document.querySelector("#possible-answers")
+var header = document.querySelector("header")
 var highScores = {}
 var questionPresentations = 0
 
@@ -75,6 +76,8 @@ var initialFormGenerator = function() {
 
     var startButton = startButtonGenerator();
     displayContainerE.appendChild(startButton);
+
+    createTimer();
 
 }
 
@@ -353,22 +356,30 @@ var QuizButtonHandler = function(event) {
     }
 }
 
+var createTimer = function() {
+    var timercon = document.createElement("div");
+    timercon.className = "timer";
+    timercon.id = "timer";
+    timercon.textContent = "Time Left: ";
+    header.appendChild(timercon);
+}
+
 var quizTimer = function() {
     
-    var interval = 20000
-    function timedOut(){
-            endScreenPresenter();
-    }
-    setTimeout(timedOut, interval);
+    var timeI = 5;
+    function timerDisplay() {
+        var timerE = document.querySelector("#timer");
+        var text = `Time Left: ${timeI}`
+        timerE.textContent = text
 
-    setInterval(function(){
-        if (elapsedTime < 20 && gameOver === false) {
-            elapsedTime++
-            console.log(elapsedTime)
-        } else if (gameOver) {
-            elapsedTime = 0;
+        timeI--
+        if (timeI === 0) {
+            endScreenPresenter();
+            return timeI = -1;
         }
-    }, 1000)
+    }
+
+    setInterval(timerDisplay, 1000)
 }
 
 initialFormGenerator();
