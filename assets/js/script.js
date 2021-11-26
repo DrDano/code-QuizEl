@@ -47,20 +47,21 @@ var questionBank = [
     }
 ]
 
-var quizDashboardE = document.querySelector("#quiz-dashboard")
-var highScoresE = document.querySelector("#high-score-btn")
-var displayContainerE = document.querySelector("#question-container")
-var displayTitleE = document.querySelector("#question-title")
-var displayListE = document.querySelector("#possible-answers")
-var header = document.querySelector("header")
+var quizDashboardE = document.querySelector("#quiz-dashboard");
+var highScoresE = document.querySelector("#high-score-btn");
+var displayContainerE = document.querySelector("#question-container");
+var displayTitleE = document.querySelector("#question-title");
+var displayListE = document.querySelector("#possible-answers");
+var header = document.querySelector("header");
 
-var currentQuestion
-var highScores = {}
-var questionPresentations = 0
-var currentScore = 0
-var elapsedTime = 0
-var gameOver = false
-var triggered = 0
+var currentQuestion;
+var highScores = {};
+var questionPresentations = 0;
+var currentScore = 0;
+var elapsedTime = 0;
+var timeI = 20;
+var gameOver = false;
+var triggered = 0;
 
 
 // Backend generation of question and answer data
@@ -203,7 +204,7 @@ var answerEvaluator = function(answer) {
 
 var wrongAnswerPunisher = function() {
     // returns new time amount after subtracting 5 seconds
-
+    timeI -= 3
 }
 
 var correctAnswerRewarder = function() {
@@ -388,7 +389,6 @@ var createTimer = function() {
 
 var quizTimer = function() {
     
-    var timeI = 20;
     var trigger = 1
 
     function timerDisplay() {
@@ -400,6 +400,7 @@ var quizTimer = function() {
         if (timeI === -1) {
             endScreenPresenter(trigger);
             clearInterval(refreshIntervalID);
+            timeI = 20
         }
     }
 
