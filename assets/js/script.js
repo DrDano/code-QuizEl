@@ -33,6 +33,17 @@ var questionBank = [
             d: 'All of the above'
         },
         correctAnswer: 'b'
+    },
+
+    {
+        question: "How can I stop a timeInterval?",
+        answers: {
+            a: 'By using push function',
+            b: 'A timeInterval cannot be stopped except by halting execution',
+            c: 'By using clearInterval function',
+            d: 'By using the document.element.remove() function'
+        },
+        correctAnswer: 'b'
     }
 ]
 
@@ -161,7 +172,6 @@ var questionPresenter = function() {
     displayContainerE.appendChild(answerButtons);
 
     questionPresentations++
-    console.log(`question ${questionPresentations} being presented`)
 }
 
 
@@ -366,7 +376,7 @@ var createTimer = function() {
 
 var quizTimer = function() {
     
-    var timeI = 5;
+    var timeI = 10;
 
     function timerDisplay() {
         var timerE = document.querySelector("#timer");
