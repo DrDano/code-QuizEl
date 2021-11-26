@@ -367,19 +367,21 @@ var createTimer = function() {
 var quizTimer = function() {
     
     var timeI = 5;
+
     function timerDisplay() {
         var timerE = document.querySelector("#timer");
         var text = `Time Left: ${timeI}`
         timerE.textContent = text
 
         timeI--
-        if (timeI === 0) {
+        if (timeI === -1) {
             endScreenPresenter();
-            return timeI = -1;
+            clearInterval(refreshIntervalID);
         }
     }
 
-    setInterval(timerDisplay, 1000)
+
+    var refreshIntervalID = setInterval(timerDisplay, 1000)
 }
 
 initialFormGenerator();
