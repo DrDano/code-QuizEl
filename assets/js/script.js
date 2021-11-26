@@ -197,7 +197,7 @@ var answerEvaluator = function(answer) {
     }
 
     var triggerB = 1
-
+    
     if (questionPresentations === questionBank.length) {
         endScreenPresenter(triggerB);
     } else {questionPresenter();}
@@ -340,6 +340,7 @@ var QuizButtonHandler = function(event) {
     var targetE = event.target;
 
     if (targetE.matches("#start-button")) {
+        triggered = 0
         gameOver = false;
         questionPresenter();
         quizTimer();
