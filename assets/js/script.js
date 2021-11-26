@@ -59,6 +59,7 @@ var questionPresentations = 0
 var currentScore = 0
 var elapsedTime = 0
 var gameOver = false
+var triggered = 0
 
 
 // Backend generation of question and answer data
@@ -190,8 +191,10 @@ var answerEvaluator = function(answer) {
         wrongAnswerPunisher();
     }
 
+    var triggerB = 1
+
     if (questionPresentations === questionBank.length) {
-        endScreenPresenter();
+        endScreenPresenter(triggerB);
     } else {questionPresenter();}
     
 }
@@ -206,7 +209,14 @@ var correctAnswerRewarder = function() {
     currentScore++
 }
 
-var endScreenPresenter = function() {
+var endScreenPresenter = function(trigger) {
+
+    if (trigger) {
+        triggered++;
+    } if (triggered > 1) {
+        return null;
+    }
+
     var startButton = document.querySelector(".start-btn-con")
     if (startButton) {
         startButton.remove();
@@ -376,7 +386,8 @@ var createTimer = function() {
 
 var quizTimer = function() {
     
-    var timeI = 10;
+    var timeI = 3;
+    var trigger = 1
 
     function timerDisplay() {
         var timerE = document.querySelector("#timer");
@@ -385,7 +396,7 @@ var quizTimer = function() {
 
         timeI--
         if (timeI === -1) {
-            endScreenPresenter();
+            endScreenPresenter(trigger);
             clearInterval(refreshIntervalID);
         }
     }
