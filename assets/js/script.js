@@ -340,6 +340,7 @@ var QuizButtonHandler = function(event) {
     var targetE = event.target;
 
     if (targetE.matches("#start-button")) {
+        gameOver = false;
         questionPresenter();
         quizTimer();
     }
@@ -399,7 +400,7 @@ var quizTimer = function() {
         timerE.textContent = text
 
         timeI--
-        if (timeI === -1) {
+        if (timeI === -1 || gameOver) {
             endScreenPresenter(trigger);
             clearInterval(refreshIntervalID);
             timeI = 20
