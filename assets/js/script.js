@@ -43,7 +43,7 @@ var questionBank = [
             c: 'By using clearInterval function',
             d: 'By using the document.element.remove() function'
         },
-        correctAnswer: 'b'
+        correctAnswer: 'c'
     }
 ]
 
@@ -53,9 +53,10 @@ var displayContainerE = document.querySelector("#question-container")
 var displayTitleE = document.querySelector("#question-title")
 var displayListE = document.querySelector("#possible-answers")
 var header = document.querySelector("header")
+
+var currentQuestion
 var highScores = {}
 var questionPresentations = 0
-
 var currentScore = 0
 var elapsedTime = 0
 var gameOver = false
@@ -162,6 +163,7 @@ var questionPresenter = function() {
     }
 
     var questionContent = questionRetriever();
+    currentQuestion = questionContent
     displayTitleE.textContent = questionContent.cq.question;
     
     var answerBtnContainer = document.querySelector(".answer-btn-container")
@@ -178,9 +180,9 @@ var questionPresenter = function() {
 
 // Evaluation of user answer
 var answerEvaluator = function(answer) {
-    // if user answer correct return true
-    // if user answer incorrect return false
-    var questionContent = questionRetriever();
+    // if user answer correct reward them
+    // if user answer incorrect remove time
+    var questionContent = currentQuestion
     var correctAnswer = questionContent.ra;
     var userAnswer = answer;
     if (userAnswer === correctAnswer) {
@@ -386,7 +388,7 @@ var createTimer = function() {
 
 var quizTimer = function() {
     
-    var timeI = 3;
+    var timeI = 20;
     var trigger = 1
 
     function timerDisplay() {
