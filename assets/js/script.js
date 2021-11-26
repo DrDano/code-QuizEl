@@ -91,7 +91,9 @@ var initialFormGenerator = function() {
     var startButton = startButtonGenerator();
     displayContainerE.appendChild(startButton);
 
-    createTimer();
+    var timercon = document.querySelector("#timer")
+    if (timercon) {
+    } else if (!timercon) {createTimer();}
 
 }
 
