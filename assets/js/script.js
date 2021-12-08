@@ -187,7 +187,7 @@ var answerEvaluator = function (answer) {
     console.log("correct answer!");
     correctAnswerRewarder();
   } else if (userAnswer !== correctAnswer) {
-    console.log("wrong, you suck.");
+    console.log("incorrect answer");
     wrongAnswerPunisher();
   }
 
